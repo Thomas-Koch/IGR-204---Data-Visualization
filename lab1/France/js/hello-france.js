@@ -66,6 +66,7 @@ function draw() {
         .attr("y", (d) => y(d.latitude) )
 
         .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
 
     svg.append("g")
         .attr("class", "x axis")
@@ -105,3 +106,15 @@ function handleMouseOver (d, i) {
                 .text("Densité : " + d.density)
                 .append("tspan");
 }
+
+/*
+function handleMouseOut (d, i) {
+    // D3 to select elements ans change color to initial state
+    d3.select(this)
+        .style("fill", "blue")
+        .attr("r", scaleRadius(d.population))
+
+    // Select text by id and remove text location
+    d3.select("#t" + d.postalCode).remove();
+}
+*/
