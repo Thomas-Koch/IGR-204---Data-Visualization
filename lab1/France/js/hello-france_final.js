@@ -1,10 +1,9 @@
 // alert("Hello, France!");
-// cd Downloads/GitHub/IGR\ 204\ -\ Data\ Visualization/lab1/France/ && python -m http.server 8080
 
 const w1 = 750;
 const h1 = 750;
-const w2 = 800;
-const h2 = 800;
+const w2 = 750;
+const h2 = 750;
 const radius = 40;
 let dataset = [];
 
@@ -56,9 +55,15 @@ function draw1() {
             
     var y = d3.scaleLinear()
           .domain([min_latitude, max_latitude])
-          .range([h1-50, 50]); // h first to rotate France
+          .range([h1-50, 5]); // h first to rotate France
     
-	// SVG ELEMENT 1
+    
+	// Create SVG containers
+    var textWindow = d3.select("#area1")
+                    .append("svg")
+                    .attr("width", w1)
+                    .attr("height", 100);
+    
 	var svg1 = d3.select("#area1")
          	    .append("svg")
                 .attr("width", w1)
@@ -87,11 +92,6 @@ function draw1() {
         .attr("transform", "translate(25)") 
         .call(d3.axisRight(y))
     
-    // Create Text window element
-    var textWindow = d3.select("#area1")
-                    .append("svg")
-                    .attr("width", w1)
-                    .attr("height", 100);
     
 // FUNCTIONS
     
@@ -108,20 +108,19 @@ function handleMouseOver1 (d, i) {
                 .append("tspan")
                 
                 .attr("class", "place-infos")
-                .attr("x", 250)
+                .attr("x", 300)
                 .attr("dy", "20")
                 .text(d.place + " (" + d.codePostal + ")")
                 .append("tspan")
                 
-                .attr("x", 250)
+                .attr("x", 300)
                 .attr("dy", "20")
                 .text("Population : " + d.population)
                 .append("tspan")
                 
-                .attr("x", 250)
+                .attr("x", 300)
                 .attr("dy", "20")
-                .text("Densité : " + d.density)
-                .append("tspan");
+                .text("Densité : " + d.density);
 }
     
 }
@@ -165,12 +164,6 @@ function draw2() {
 
     // Create SVG containers
     
-    var svg2 = d3.select("#area2")
-                .append("svg")
-                .attr("width", w2)
-                .attr("height", h2);
-    
-    // Text grouping
     var groupText = d3.select("#area2")
                         .append("svg")
                         .attr("width", w2)
@@ -178,6 +171,11 @@ function draw2() {
                         .attr("class", "everything")
                         .attr("font-size", "20px")
                         .attr("font-weight", "bold");
+    
+    var svg2 = d3.select("#area2")
+                .append("svg")
+                .attr("width", w2)
+                .attr("height", h2);
                     
 
     // Circle grouping
@@ -226,21 +224,19 @@ function handleMouseOver2 (d, i) {
             .attr("y", 20)
             .append("tspan")
 
-            .attr("x", 250) //scaleX(d.longitude)+
+            .attr("x", 300) //scaleX(d.longitude)+
             .attr("dy", 0)
             .text(d.place + " (" + d.codePostal + ")")
             .append("tspan")
 
-            .attr("x", 250)
+            .attr("x", 300)
             .attr("dy", 20)
             .text("Population : " + d.population)
             .append("tspan")
 
-            .attr("x", 250)
+            .attr("x", 300)
             .attr("dy", 20)
-            .text("Densité : " + d.density)
-            .append("tspan");
-
+            .text("Densité : " + d.density);
 }
 
 
