@@ -1,21 +1,23 @@
 // alert("Hello, France!");
 // cd Downloads/GitHub/IGR\ 204\ -\ Data\ Visualization/lab1/France/ && python -m http.server 8080
 
-const w = 750;
-const h = 750;
-let dataset = [];
+const w1 = 750;
+const h1 = 750;
+let dataset1 = [];
 
 // Create SVG element
-let svg = d3.select("body")
+let svg1 = d3.select("#area1")
             .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+            .attr("width", w1)
+            .attr("height", h1);
 
+/*
 // Create Text window element
 let textWindow = d3.select("body")
                     .append("svg")
-                    .attr("width", w)
+                    .attr("width", w1)
                     .attr("height", 100);
+*/
 
 // Loading data
 d3.tsv("data/france.tsv")
@@ -41,21 +43,21 @@ d3.tsv("data/france.tsv")
             // Data scales
             x = d3.scaleLinear()
                 .domain(d3.extent(rows, (row) => row.longitude))
-                .range([75, w-75]);
+                .range([75, w1-75]);
             
             y = d3.scaleLinear()
                 .domain(d3.extent(rows, (row) => row.latitude))
-                .range([h-50, 50]); // h first to rotate France
+                .range([h1-50, 50]); // h first to rotate France
             
             // Drawing
-            dataset = rows;
+            dataset1 = rows;
             draw();
         }
     });
 
 function draw() {
-    svg.selectAll("rect")
-        .data(dataset)
+    svg1.selectAll("rect")
+        .data(dataset1)
         .enter()
         .append("rect")
 
@@ -65,19 +67,21 @@ function draw() {
         .attr("x", (d) => x(d.longitude) )
         .attr("y", (d) => y(d.latitude) )
 
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut)
-
-    svg.append("g")
+        //.on("mouseover", handleMouseOver)
+    
+    
+    // Axis creation
+    svg1.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0 " + (h-10) + ")")
+        .attr("transform", "translate(0 " + (h1-10) + ")")
         .call(d3.axisTop(x))
-    svg.append("g")
+    svg1.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(25)") 
         .call(d3.axisRight(y))
 }
 
+/*
 function handleMouseOver (d, i) {
     console.log(d)
 
@@ -105,16 +109,5 @@ function handleMouseOver (d, i) {
                 .attr("dy", "20")
                 .text("Densité : " + d.density)
                 .append("tspan");
-}
-
-/*
-function handleMouseOut (d, i) {
-    // D3 to select elements ans change color to initial state
-    d3.select(this)
-        .style("fill", "blue")
-        .attr("r", scaleRadius(d.population))
-
-    // Select text by id and remove text location
-    d3.select("#t" + d.postalCode).remove();
 }
 */
