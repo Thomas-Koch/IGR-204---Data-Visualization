@@ -14,10 +14,11 @@
     <div class="stackedit__toc">
       
 <ul>
-<li><a href="#titre-de-la-page">Titre de la page</a>
+<li><a href="#lab-1-introduction-to-d3">Lab 1: Introduction to D3</a>
 <ul>
-<li><a href="#premier-affichage--carte-de-france-standard-avec-affichage-informations">Premier affichage : carte de france standard avec affichage informations</a></li>
-<li><a href="#deuxième-afffichage--carte-de-france-interactive-sur-densité-de-population">Deuxième afffichage : carte de france interactive sur densité de population</a></li>
+<li><a href="#instructions-to-start-the-project-correctly">Instructions to start the project correctly</a></li>
+<li><a href="#first-visualization">First visualization</a></li>
+<li><a href="#second-display">Second display</a></li>
 </ul>
 </li>
 </ul>
@@ -25,19 +26,34 @@
     </div>
   </div>
   <div class="stackedit__right">
-    
-    <script type="text/javascript" src="js/hello-france_final.js"></script>
-   
-    <div class="stackedit__html"><h1 id="titre-de-la-page">Titre de la page</h1>
-    <h2 id="premier-affichage--carte-de-france-standard-avec-affichage-informations">Premier affichage : carte de france standard avec affichage informations</h2>
-    <p>Travail demandé dans l’énoncé du TP. Carte statique avec affichage de quelques informations en passant la souris sur les villes.</p>
-    <div id="area1"></div>
-    <h2 id="deuxième-afffichage--carte-de-france-interactive-sur-densité-de-population">Deuxième afffichage : carte de france interactive sur densité de population</h2>
-        <p>Travail pour aller plus loin. Il est ici possible de zoomer et de déplacer la carte avec la souris. En passant la souris sur une ville, le point sélectionné change de couleur et s’agrandit. Les informations s’affichent en bas de la carte.</p>
-        <p><em><strong>Note :</strong></em> la corse apparaît très faiblement ici du fait de sa faible densité de population en comparaison avec les autres régions de France.</p>
-     <div id="area2"></div>
-</div>
-    
+      
+      <script type="text/javascript" src="js/hello-france_final.js"></script>
+      
+    <div class="stackedit__html">
+      <h1 id="lab-1-introduction-to-d3">Lab 1: Introduction to D3</h1>
+<p><em>May 2020</em></p>
+<p><strong>Work of :</strong> <em>Thomas KOCH - MS Big Data</em><br>
+<strong>Based on :</strong> <a href="https://perso.telecom-paristech.fr/eagan/class/igr204/lab-d3">https://perso.telecom-paristech.fr/eagan/class/igr204/lab-d3</a></p>
+<h2 id="instructions-to-start-the-project-correctly">Instructions to start the project correctly</h2>
+<ol>
+<li>Download and unzip the contents of the <code>France.zip</code> folder into the directory of your choice.</li>
+<li>Start a local http server on port 8080. To do this, open a terminal and copy the line below, replacing $PATH$ with the path to the directory where you have the <code>France</code> folder.</li>
+</ol>
+<pre class=" language-bash"><code class="prism . language-bash"><span class="token function">cd</span> <span class="token variable">$PATH</span>$/France/ <span class="token operator">&amp;&amp;</span> python -m http.server 8080
+</code></pre>
+<ol start="3">
+<li>In a browser, go to the following address:  <a href="http://localhost:8080/">http://localhost:8080/</a></li>
+</ol>
+<h2 id="first-visualization">First visualization</h2>
+<p>For this first visualization, I simply followed the instuctions requested in the TP statement. So we get a map of France with ** displaying information about the city overflown with the mouse**. This information is displayed above the map.</p>
+<div id="area1"></div>
+        
+<h2 id="second-display">Second display</h2>
+<p>For this second visualization, I started again from the previous work by making the map more <strong>interactive</strong> with a <strong>dynamic display</strong> based on <strong>population density</strong>.</p>
+<p>It is thus possible to <strong>zoom</strong> and/or <strong>move the map</strong> with the mouse. As before, flying over a city allows you to display its information above the map. I also added a <strong>style effect</strong> since the selected point <strong>changes color and enlarges</strong>.</p>
+<p><em><strong>Note :</strong></em> Corsica appears badly here because of its low population density compared to other regions of France.</p>
+<div id="area2"></div>
     </div>
+  </div>
     
 </body>
